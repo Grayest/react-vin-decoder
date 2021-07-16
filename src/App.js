@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState } from "react";
+import "./App.css";
+import { Typography } from "@material-ui/core";
+
+import MainContainer from "./Components/UI/MainContainer";
+import VINSearch from "./Components/UI/VINSearch";
+import DecodedList from "./Components/UI/DecodedList";
 
 function App() {
+  const [values, setValues] = useState(null);
+  const [isDetailedChecked, setIsDetailedChecked] = useState(false);
+
+  const getValues = (data) => {
+    setValues(data);
+  };
+
+  const detailedHandler = (selected) => {
+    setIsDetailedChecked(selected);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <MainContainer>
+        <Typography variant="h5" gutterBottom>
+          <VINSearch
+            onFetch={getValues}
+            isDetailedChecked={isDetailedChecked}
+            isDetailed={detailedHandler}
+          />
+          {values !== null && (
+            <DecodedList values={values} isSelected={isDetailedChecked} />
+          )}
+        </Typography>
+      </MainContainer>
+    </Fragment>
   );
 }
 
