@@ -21,7 +21,10 @@ const Footer = () => {
   return (
     <AppBar position="fixed" color="primary" className={classes.root}>
       <Toolbar className={classes.bottomBar}>
-        <p className={classes.bottomBar}>VIN Decoder App</p>
+        <p className={classes.bottomBar}>Below guides explains on how to find ATV VINs based on Manufacturers :</p>
+  <p className={classes.bottomBar}>
+<a href="https://atvtrailreviews.com/atv-guides/finding-yamaha-atv-vin-decoder">Finding ATV VIN in Yamaha ATV – Where to find your Yamaha ATV Vin Number Decoder ?</a>
+</p>
       </Toolbar>
     </AppBar>
   );
